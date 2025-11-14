@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMob Project Checklist</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --success: #2ecc71;
+            --border: #bdc3c7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--primary);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+        
+        .progress-container {
+            margin-bottom: 30px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--success);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .checklist-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+        
+        .checklist-items {
+            padding: 20px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+        }
+        
+        .checklist-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .checkbox {
+            margin-right: 15px;
+            margin-top: 3px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .checkbox.checked {
+            background-color: var(--success);
+            border-color: var(--success);
+        }
+        
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .item-description {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .link-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+        
+        .link-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .completion-message {
+            display: none;
+            text-align: center;
+            background-color: var(--success);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+        
+        .completion-message h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .completion-message p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .celebration-emoji {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.1rem;
+            }
+            
+            .checklist-items {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WebMob Project</h1>
+        <p class="subtitle">A checklist to get everything you need for your WebMob robot</p>
+    </header>
+    
+    <div class="progress-container">
+        <h3>Project Progress</h3>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+            <span id="progressText">0% Complete</span>
+            <span id="itemsCompleted">0/8 items</span>
+        </div>
+    </div>
+    
+    <main>
+        <section class="checklist-section">
+            <div class="section-header">
+                <h2 class="section-title">3D Printing Files</h2>
+            </div>
+            <div class="checklist-items">
+                <div class="checklist-item" data-item="1">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Download 3D Models</h3>
+                        <p class="item-description">Get the 3D printing files for WebMob from one of these platforms:</p>
+                        <div class="links">
+                            <a href="https://www.thingiverse.com/search?q=MobBob&page=1" class="link-button" target="_blank">Thingiverse</a>
+                            <a href="https://www.printables.com/search/models?q=MobBob" class="link-button" target="_blank">Printables</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="checklist-section">
+            <div class="section-header">
+                <h2 class="section-title">Electronic Components</h2>
+            </div>
+            <div class="checklist-items">
+                <div class="checklist-item" data-item="2">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Arduino Nano + Expansion Board</h3>
+                        <p class="item-description">The main microcontroller for your WebMob robot.</p>
+                    </div>
+                </div>
+                <div class="checklist-item" data-item="3">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">4 Servomotors (SG90 or similar)</h3>
+                        <p class="item-description">These will control the movement of your robot.</p>
+                    </div>
+                </div>
+                <div class="checklist-item" data-item="4">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Bluetooth Module (BLE 4.0 compatible)</h3>
+                        <p class="item-description">Enables wireless communication with your smartphone.</p>
+                    </div>
+                </div>
+                <div class="checklist-item" data-item="5">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Power Source (9V battery or similar)</h3>
+                        <p class="item-description">Provides sufficient power for the Arduino and components.</p>
+                    </div>
+                </div>
+                <p style="padding: 0 20px 15px 20px; color: #7f8c8d; font-style: italic; margin: 0;">
+                    Note: These are the basic components needed. Depending on the version of MobBob chosen, it could require some extra components.
+                </p>
+            </div>
+        </section>
+        
+        <section class="checklist-section">
+            <div class="section-header">
+                <h2 class="section-title">Assembly</h2>
+            </div>
+            <div class="checklist-items">
+                <div class="checklist-item" data-item="6">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Put Everything Together</h3>
+                        <p class="item-description">Assemble the 3D printed parts with the electronic components. Follow the instructions from the 3D model you've chosen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="checklist-section">
+            <div class="section-header">
+                <h2 class="section-title">Arduino Code</h2>
+            </div>
+            <div class="checklist-items">
+                <div class="checklist-item" data-item="7">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Upload the Code</h3>
+                        <p class="item-description">Download and upload the Arduino code to your Nano board. I am using the code in the folder "MobBob-Control-Bluetooth".</p>
+                        <div class="links">
+                            <a href="https://github.com/cevinius/MobBob" class="link-button" target="_blank">GitHub Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="checklist-section">
+            <div class="section-header">
+                <h2 class="section-title">WebMob Web App</h2>
+            </div>
+            <div class="checklist-items">
+                <div class="checklist-item" data-item="8">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <h3 class="item-title">Access the Control Interface</h3>
+                        <p class="item-description">On the smartphone that will be placed in the robot, open the WebMob web app.</p>
+                        <div class="links">
+                            <a href="https://ivanr3d.com/projects/webmob/" class="link-button" target="_blank">WebMob Web App</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="completion-message" id="completionMessage">
+            <div class="celebration-emoji">🎉</div>
+            <h2>Congratulations!</h2>
+            <p>You've completed all the steps for your WebMob project!</p>
+            <p>Your robot should now be ready to use. Enjoy your creation!</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>WebMob Project Checklist - Created with ❤️ for the maker community</p>
+    </footer>
+    
+    <script>
+        // Confetti animation function
+        function createConfetti() {
+            const colors = ['#f94144', '#f3722c', '#f8961e', '#f9c74f', '#90be6d', '#43aa8b', '#577590'];
+            const confettiCount = 150;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.opacity = Math.random() * 0.5 + 0.5;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confetti.style.zIndex = '9999';
+                document.body.appendChild(confetti);
+                
+                // Animation
+                const animation = confetti.animate([
+                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${Math.random() * 200 - 100}px, ${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.2, 1)'
+                });
+                
+                // Remove confetti after animation completes
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+        
+        // Progress tracking
+        function updateProgress() {
+            const totalItems = document.querySelectorAll('.checklist-item').length;
+            const checkedItems = document.querySelectorAll('.checkbox.checked').length;
+            const progressPercentage = Math.round((checkedItems / totalItems) * 100);
+            
+            // Update progress bar
+            document.getElementById('progressFill').style.width = progressPercentage + '%';
+            document.getElementById('progressText').textContent = progressPercentage + '% Complete';
+            document.getElementById('itemsCompleted').textContent = checkedItems + '/' + totalItems + ' items';
+            
+            // Show completion message if all items are checked
+            if (checkedItems === totalItems) {
+                document.getElementById('completionMessage').style.display = 'block';
+                createConfetti();
+                
+                // Continue confetti for a while
+                const confettiInterval = setInterval(createConfetti, 1500);
+                setTimeout(() => clearInterval(confettiInterval), 10000);
+            } else {
+                document.getElementById('completionMessage').style.display = 'none';
+            }
+            
+            // Save state to localStorage
+            localStorage.setItem('webmob-progress', progressPercentage);
+            document.querySelectorAll('.checklist-item').forEach((item, index) => {
+                const checkbox = item.querySelector('.checkbox');
+                localStorage.setItem(`webmob-checkbox-${index}`, checkbox.classList.contains('checked') ? 'checked' : 'unchecked');
+            });
+        }
+        
+        // Toggle checkbox function
+        function toggleCheckbox(checkbox) {
+            checkbox.classList.toggle('checked');
+            updateProgress();
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved state
+            const checkboxes = document.querySelectorAll('.checkbox');
+            checkboxes.forEach((checkbox, index) => {
+                const savedState = localStorage.getItem(`webmob-checkbox-${index}`);
+                if (savedState === 'checked') {
+                    checkbox.classList.add('checked');
+                }
+                
+                // Add click event to checkbox
+                checkbox.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevent triggering the item click twice
+                    toggleCheckbox(this);
+                });
+            });
+            
+            // Add click event to checklist items (to toggle when clicking text)
+            document.querySelectorAll('.checklist-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const checkbox = this.querySelector('.checkbox');
+                    toggleCheckbox(checkbox);
+                });
+            });
+            
+            // Initialize progress
+            updateProgress();
+        });
+    </script>
+</body>
+</html>
