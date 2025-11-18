@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="WebMob Robot">
+    <!-- <link rel="manifest" href="./manifest.json"> -->
+    <!-- iOS Safari PWA support -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="WebMob">
+    <!-- <link rel="apple-touch-icon" href="./icon-192x192.png">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"> -->
+    <title>WebMob - Your web-powered robot companion</title>
+    <link rel="stylesheet" href="./css/design-system.css">
+    <link rel="stylesheet" href="./css/connect.css">
+    <link rel="stylesheet" href="./css/face.css">
+    <link rel="stylesheet" href="./css/navigation.css">
+</head>
+<body>
+    <main>
+        <button id="connectBtn" class="connect-btn disconnected" aria-label="Wake up and connect to device">
+            <div class="loading-spinner"></div>
+            <span id="connectTxt">wake up</span>
+        </button>
+        
+        <div class="face">
+            <div class="eye left" style="transform: rotateX(85deg);">
+                <div class="eyelid upper"></div>
+                <div class="eyelid lower"></div>
+            </div>
+            <div class="eye right" style="transform: rotateX(85deg);">
+                <div class="eyelid upper"></div>
+                <div class="eyelid lower"></div>
+            </div>
+            <div class="mouth--container">
+                <div id="mouth" class="mouth"></div>
+            </div>
+        </div>
+
+        <div id="navigation" class="disabled">
+            <div id="left-arrow"></div>
+            <div id="arrow"></div>
+            <div id="right-arrow"></div>
+            <div class="screen-container"></div>
+        </div>
+
+    </main>
+    
+    <script src="./miniapps/home.js"></script>
+    <script src="./miniapps/controlpad.js"></script>
+
+    <script defer="" src="./vendor/p5.min.js"></script>
+    <script defer="" src="./vendor/p5.ble.js"></script>
+    <script src="./utils/speaker.js"></script>
+    <script src="./utils/connect.js"></script>
+    <script src="./js/eyes.js"></script>
+    <script src="./js/navigation.js"></script>
+
+</body>
+</html>

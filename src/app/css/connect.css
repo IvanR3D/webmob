@@ -1,0 +1,151 @@
+.connect-btn {
+    /* Base Styles */
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    z-index: 1000;
+
+    /* Design System Alignment */
+    border-radius: 12px;
+    /* --radius-md */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* --shadow-md */
+}
+
+.connect-btn:active {
+    transform: scale(0.98);
+}
+
+.connect-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.connect-btn.disconnected:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Disconnected State - Primary Button Style */
+.connect-btn.disconnected {
+    position: fixed;
+    bottom: 6rem;
+    /* Adjusted for better positioning */
+    transform: translateX(-50%);
+
+    /* Primary Button Styles */
+    background-color: #FF4B4B;
+    /* exception --Accent because the disconnected state */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    /* Accessibility minimum touch target */
+    min-width: 140px;
+}
+
+.connect-btn.disconnected:hover:not(:disabled) {
+    background-color: #db3f3f;
+    /* --accent-dark */
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.connect-btn.disconnected:active:not(:disabled) {
+    transform: translateX(-50%) scale(0.98);
+}
+
+/* Connected State - Icon Button Style */
+.connect-btn.connected {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+
+    /* Icon Button Styles */
+    width: 56px;
+    /* Slightly larger for better touch target */
+    height: 56px;
+    border-radius: 50%;
+    /* Circular */
+    background-color: var(--secondary-mint-green);
+    padding: 0.5rem;
+}
+
+.connect-btn.connected:hover:not(:disabled) {
+    background-color: #00b86e;
+    /* Darker shade of secondary */
+    box-shadow: 0 0 20px rgba(0, 224, 138, 0.3);
+    /* Gentle glow */
+    transform: scale(1.05);
+}
+
+.connect-btn.connected:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Connecting State */
+.connect-btn.connecting {
+    width: 6rem;
+    height: 6rem;
+    position: fixed;
+    bottom: 6rem;
+    background-color: var(--text-secondary-gray);
+    color: var(--input-background);
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    cursor: not-allowed;
+}
+
+.connect-icon {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+    /* Make icon white */
+}
+
+/* Loading Animation */
+.loading-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+.connecting > .loading-spinner {
+    display: block;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .connect-btn {
+        transition-duration: 0.01ms;
+    }
+
+    .loading-spinner {
+        animation: none;
+    }
+
+    .connect-btn:hover:not(:disabled) {
+        transform: none;
+    }
+
+    .connect-btn.connected:hover:not(:disabled) {
+        transform: none;
+    }
+}

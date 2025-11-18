@@ -6,19 +6,20 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Documentation](https://img.shields.io/badge/docs-available-brightgreen.svg)](docs/)
 
+## [Live Demo](https://ivanr3d.com/projects/webmob)
 
 ## 📖 About
 
-WebMob is an educational robotics project that brings together web technologies, Arduino, and 3D printing to create an interactive learning companion. Using a smartphone as the robot's "face," WebMob features expressive eyes, voice interaction, and engaging learning activities like math games and hand-gesture drawing.
+WebMob is an educational robotics project that brings together web technologies, Arduino, and 3D printing to create an interactive learning companion. Using a smartphone as the robot's "face," WebMob features expressive eyes, voice interaction, and engaging learning activities (_examples coming soon!_).
 
-**Current Status**: 📚 This repository is currently in its documentation phase. We're preparing comprehensive guides and design documentation before releasing the source code. Stay tuned!
+**Current Status**: 📚 This repository is currently in its documentation phase. We're preparing comprehensive guides and design documentation. **A first draft of the source code is already here in the src folder.**
 
 ## ✨ Features
 
 - 🎭 **Expressive Robot Face** - Animated eyes with emotions (happy, sad, surprised, etc.)
 - 🎤 **Voice Interaction** - Text-to-speech responses with character personality
 - 📱 **Web-Based Interface** - No app installation required
-- 🎮 **Interactive Games** - Math challenges and hand-gesture drawing
+- 🎮 **Interactive Games** - Math challenges and hand-gesture drawing *coming soon!*
 - 🔌 **Bluetooth Control** - Wireless communication with Arduino
 - 🎨 **Beautiful Design System** - Following friendly minimalism principles
 - ♿ **Accessible** - WCAG 2.1 AA compliant
@@ -64,13 +65,14 @@ WebMob follows a character-driven design system that emphasizes:
 - [ ] Assembly instructions
 - [ ] Troubleshooting guide
 
-### Phase 2: Code Release (Coming Soon)
-- [ ] Web application source code
-- [ ] Arduino firmware
+### Phase 2: Code Release (First draft)
+- [x] Web application source code
+- [x] Arduino firmware
+- [ ] Dist version
 - [ ] API documentation
 - [ ] Examples and demos
 
-### Phase 3: Community Growth
+### Phase 3: Community Growth (Coming Soon)
 - [ ] Video tutorials
 - [ ] Community projects showcase
 - [ ] Additional learning modules
@@ -78,12 +80,12 @@ WebMob follows a character-driven design system that emphasizes:
 
 ## 🤝 Contributing
 
-We welcome contributions! While the source code isn't released yet, you can help by:
+We welcome contributions! You can help by:
 
 - 🐛 Reporting issues or suggestions
 - 📝 Improving documentation
-- 🎨 Providing design feedback
 - 🌍 Translating documentation
+- 🎨 Providing design feedback
 - 📸 Sharing your WebMob build
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
