@@ -15,18 +15,18 @@ const navigationScreens = [
   {
     name: "controlpad",
     icon: "controlpad",
-    app: controlPadApp, // The control pad app
+    app: controlPadApp,
   },
   {
     name: "expressions",
     icon: "expressions",
-    app: expressionsApp, // Your expressions app object
-  }
-  // {
-  //   name: "settings",
-  //   icon: "settings",
-  //   app: settingsApp, // Your settings app object
-  // },
+    app: expressionsApp, 
+  },
+  {
+    name: "actions",
+    icon: "actions",
+    app: actionsApp,
+  },
 ];
 
 let currentScreen = 0;

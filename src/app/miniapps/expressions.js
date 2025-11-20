@@ -6,7 +6,7 @@ const expressionsApp = {
         <div class="movement-toggle"><label class="toggle-label"><input id="toggleInput" name="toggleInput" type="checkbox" class="toggle-input"><span class="toggle-slider"></span><span class="toggle-text">Add move</span></label></div>
         <div class="expressions-content">
             <h2 class="title">Expressions</h2>
-            <p class="screen-subtitle">Control your robot's expressions</p>
+            <p class="screen-subtitle">Test your robot's expressions</p>
 
             <div class="buttons-grid">
                 <button class="btn btn-secondary" data-expression="happy">Happy</button>
