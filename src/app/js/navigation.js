@@ -17,6 +17,11 @@ const navigationScreens = [
     icon: "controlpad",
     app: controlPadApp, // The control pad app
   },
+  {
+    name: "expressions",
+    icon: "expressions",
+    app: expressionsApp, // Your expressions app object
+  }
   // {
   //   name: "settings",
   //   icon: "settings",

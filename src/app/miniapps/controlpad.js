@@ -3,7 +3,7 @@ const controlPadApp = {
   // HTML template
   getHTML: () => `
     <div id="controlpad-container" class="screen">
-    <button class="back-button">← Back</button>
+    <button class="back-button">←</button>
     <div class="controlpad-content">
         <h2 class="title">Movement Control</h2>
         <p class="screen-subtitle">Direct your robot's journey with precision</p>
@@ -209,7 +209,7 @@ const controlPadApp = {
       }
     `,
   // Initialize function - sets up event listeners
-  init: (container, onBack) => {
+  init: (container) => {
     const MOVEMENT_COMMANDS = {
       FORWARD: "<FW,-1>",
       BACKWARD: "<BW,-1>",
@@ -219,15 +219,6 @@ const controlPadApp = {
     };
 
     let activeButton = null;
-    // Your sendData function
-    function sendData(command) {
-      const INPUTVALUE = command;
-      if (!("TextEncoder" in window)) {
-        console.log("Sorry, this browser does not support TextEncoder...");
-      }
-      let enc = new TextEncoder(); // always utf-8
-      blueToothCharacteristic.writeValue(enc.encode(INPUTVALUE));
-    }
 
     // Movement function
     const moveTo = (dir, button) => {
@@ -275,8 +266,11 @@ const controlPadApp = {
 
     // Back button
     const backButton = container.querySelector(".back-button");
-    if (backButton && onBack) {
-      backButton.addEventListener("click", onBack);
+    if (backButton) {
+      backButton.addEventListener("click", () => {
+        loadScreen(0);
+        currentScreen = 0;
+      });
     }
   },
 
