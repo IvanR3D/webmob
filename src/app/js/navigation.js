@@ -27,6 +27,11 @@ const navigationScreens = [
     icon: "actions",
     app: actionsApp,
   },
+  {
+    name: "support",
+    icon: "support",
+    app: supportApp,
+  },
 ];
 
 let currentScreen = 0;
